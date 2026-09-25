@@ -59,6 +59,7 @@ function ReviewsSection() {
           <a
             className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-[.9rem] font-semibold text-navy shadow-[0_1px_3px_rgba(0,0,0,.12)] transition hover:scale-[1.03] hover:shadow-[0_4px_16px_rgba(0,0,0,.15)]"
             href={business.googleReviewsUrl}
+            id="reviews-google-link"
             rel="noopener noreferrer"
             target="_blank"
           >
