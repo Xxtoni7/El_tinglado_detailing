@@ -9,9 +9,9 @@ function Header() {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-[background,padding,box-shadow] duration-400 ${
+      className={`fixed top-0 z-[1000] w-full leading-[1.6] transition-[background,padding,box-shadow] duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
         isScrolled
-          ? "bg-navy/[.95] py-[.6rem] shadow-[0_4px_24px_rgba(0,0,0,.3)] backdrop-blur-xl"
+          ? "bg-navy/[.95] py-[.6rem] shadow-[0_4px_24px_rgba(0,0,0,.3)] backdrop-blur-[16px]"
           : "py-4"
       }`}
       id="header"
@@ -31,8 +31,8 @@ function Header() {
           El tinglado Detailing
         </a>
         <nav
-          className={`fixed top-0 right-0 h-screen w-[280px] flex-col gap-6 bg-navy px-8 pt-20 pb-8 shadow-[-8px_0_32px_rgba(0,0,0,.3)] transition-[right] duration-400 md:static md:flex md:h-auto md:w-auto md:flex-row md:items-center md:gap-8 md:bg-transparent md:p-0 md:shadow-none ${
-            isMenuOpen ? "flex right-0" : "hidden right-[-100%] md:flex"
+          className={`fixed top-0 flex h-screen w-[280px] flex-col gap-6 bg-navy px-8 pt-20 pb-8 shadow-[-8px_0_32px_rgba(0,0,0,.3)] transition-[right] duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:static md:h-auto md:w-auto md:flex-row md:items-center md:gap-8 md:bg-transparent md:p-0 md:shadow-none ${
+            isMenuOpen ? "right-0" : "right-[-100%] md:right-auto"
           }`}
           id="primary-navigation"
         >
@@ -40,11 +40,11 @@ function Header() {
             <a
               className={
                 id === "consulta"
-                  ? "rounded-full bg-lime px-[1.4rem] py-2 text-[0.85rem] font-semibold text-navy transition hover:scale-105 hover:shadow-[0_0_24px_rgba(200,230,50,0.25)]"
-                  : `relative text-[1.1rem] font-medium text-white/80 transition hover:text-white after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:bg-lime after:transition-[width] md:text-sm ${
+                  ? "rounded-full bg-lime px-[1.4rem] py-[.6rem] text-[0.85rem] font-semibold text-navy transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-105 hover:shadow-[0_0_24px_rgba(200,230,50,0.25)]"
+                  : `relative text-[1.1rem] font-medium transition-[color] duration-300 ease-[ease] hover:text-white after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:bg-lime after:transition-[width] after:duration-300 after:ease-[cubic-bezier(0.22,1,0.36,1)] md:text-[.9rem] ${
                       activeSection === id
                         ? "after:w-full text-white"
-                        : "after:w-0 hover:after:w-full"
+                        : "text-white/80 after:w-0 hover:after:w-full"
                     }`
               }
               href={href}
@@ -59,24 +59,24 @@ function Header() {
           aria-controls="primary-navigation"
           aria-expanded={isMenuOpen}
           aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
-          className="z-[51] flex flex-col gap-[5px] p-1 md:hidden"
+          className="z-[1001] flex flex-col gap-[5px] p-1 md:hidden"
           id="menuToggle"
           onClick={toggleMenu}
           type="button"
         >
           <span
-            className={`block h-0.5 w-6 rounded-sm bg-white transition ${
-              isMenuOpen ? "translate-y-[7px] rotate-45" : ""
+            className={`block h-0.5 w-6 rounded-sm bg-white transition-[transform,opacity] duration-300 ease-[ease] ${
+              isMenuOpen ? "[transform:rotate(45deg)_translate(5px,5px)]" : ""
             }`}
           />
           <span
-            className={`block h-0.5 w-6 rounded-sm bg-white transition ${
+            className={`block h-0.5 w-6 rounded-sm bg-white transition-[transform,opacity] duration-300 ease-[ease] ${
               isMenuOpen ? "opacity-0" : ""
             }`}
           />
           <span
-            className={`block h-0.5 w-6 rounded-sm bg-white transition ${
-              isMenuOpen ? "-translate-y-[7px] -rotate-45" : ""
+            className={`block h-0.5 w-6 rounded-sm bg-white transition-[transform,opacity] duration-300 ease-[ease] ${
+              isMenuOpen ? "[transform:rotate(-45deg)_translate(5px,-5px)]" : ""
             }`}
           />
         </button>
