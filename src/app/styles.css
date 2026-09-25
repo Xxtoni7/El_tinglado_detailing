@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #0F1B33;
-  --color-navy-light: #1A2D52;
-  --color-lime: #C8E632;
-  --color-lime-dark: #A8C41A;
-  --color-warm: #FAF8F5;
+  --color-navy: #0f1b33;
+  --color-navy-light: #1a2d52;
+  --color-lime: #c8e632;
+  --color-lime-dark: #a8c41a;
+  --color-warm: #faf8f5;
   --font-heading: "Outfit", sans-serif;
   --font-body: "Inter", sans-serif;
 }
@@ -38,16 +38,21 @@ body {
   height: 8px;
   border-radius: 3px;
   background: var(--color-lime);
-  content: '';
+  content: "";
   animation: scroll-dot 2s infinite;
 }
 
 @keyframes hero-bounce {
-  50% { transform: translateY(8px); }
+  50% {
+    transform: translateY(8px);
+  }
 }
 
 @keyframes scroll-dot {
-  to { top: 20px; opacity: 0; }
+  to {
+    top: 20px;
+    opacity: 0;
+  }
 }
 
 .whatsapp-float {
@@ -60,5 +65,7 @@ body {
 }
 
 @keyframes whatsapp-pulse {
-  50% { filter: drop-shadow(0 0 12px rgba(37, 211, 102, 0.45)); }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(37, 211, 102, 0.45));
+  }
 }
