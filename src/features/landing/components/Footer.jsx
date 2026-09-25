@@ -1,4 +1,4 @@
-import logo from "../../../assets/images/Logo.jpeg";
+import logo from "../../../assets/images/Logo.png";
 import { business } from "../data/business.js";
 import Container from "../../../shared/ui/Container.jsx";
 import { WhatsAppIcon } from "./Hero.jsx";

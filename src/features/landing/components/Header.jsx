@@ -1,4 +1,4 @@
-import logo from "../../../assets/images/Logo.jpeg";
+import logo from "../../../assets/images/Logo.png";
 import { useHeaderState } from "../hooks/useHeaderState.js";
 import { navigation } from "../data/navigation.js";
 import Container from "../../../shared/ui/Container.jsx";
