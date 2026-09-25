@@ -219,7 +219,29 @@ function Hero() {
           from="none"
           mobileFrom="top"
         >
-          <div className="h-9.5 w-6 rounded-[14px] border-2 border-white/30" />
+          <div className="h-9.5 w-6 rounded-[14px] border-2 border-white/30 max-md:hidden" />
+          <svg
+            aria-hidden="true"
+            className="hidden h-8 w-[1.45rem] max-md:block"
+            fill="none"
+            viewBox="0 0 24 34"
+          >
+            <rect
+              height="25"
+              rx="3"
+              stroke="currentColor"
+              strokeWidth="2"
+              width="16"
+              x="4"
+              y="1.5"
+            />
+            <path
+              d="M10 23h4"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeWidth="2"
+            />
+          </svg>
           Descubrí más
         </Entrance>
       </Container>
