@@ -49,3 +49,16 @@ body {
 @keyframes scroll-dot {
   to { top: 20px; opacity: 0; }
 }
+
+.whatsapp-float {
+  animation: whatsapp-pulse 2s infinite;
+}
+
+.whatsapp-float:hover > span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes whatsapp-pulse {
+  50% { filter: drop-shadow(0 0 12px rgba(37, 211, 102, 0.45)); }
+}
