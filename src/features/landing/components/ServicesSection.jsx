@@ -1,16 +1,24 @@
 import { services } from "../data/services.js";
+import { useReveal } from "../hooks/useReveal.js";
 import Container from "../../../shared/ui/Container.jsx";
 import SectionHeading from "../../../shared/ui/SectionHeading.jsx";
 import ServiceCard from "./ServiceCard.jsx";
 
 function ServicesSection({ onConsult }) {
+  const { ref: headingRef, isVisible: isHeadingVisible } = useReveal();
+
   return (
     <section
       className="relative bg-navy py-[clamp(4rem,8vw,7rem)] before:absolute before:top-0 before:right-0 before:left-0 before:h-px before:bg-[linear-gradient(90deg,transparent,#C8E632,transparent)]"
       id="servicios"
     >
       <Container>
-        <div className="[&>h2]:text-white [&>p]:text-white/50">
+        <div
+          className={`reveal [&>h2]:text-white [&>p]:text-white/50 ${
+            isHeadingVisible ? "reveal-visible" : ""
+          }`}
+          ref={headingRef}
+        >
           <SectionHeading
             eyebrow="Servicios"
             title={
@@ -23,10 +31,11 @@ function ServicesSection({ onConsult }) {
           />
         </div>
         <div className="mt-12 grid grid-cols-[repeat(auto-fit,minmax(340px,1fr))] gap-6 max-lg:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] max-md:grid-cols-1">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <ServiceCard
               key={service.name}
               onConsult={onConsult}
+              revealDelay={index * 100}
               service={service}
             />
           ))}

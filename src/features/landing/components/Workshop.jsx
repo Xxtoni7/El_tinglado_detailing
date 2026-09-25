@@ -1,4 +1,5 @@
 import workshopImage from "../../../assets/images/hero.jpg";
+import { useReveal } from "../hooks/useReveal.js";
 import Container from "../../../shared/ui/Container.jsx";
 import SectionHeading from "../../../shared/ui/SectionHeading.jsx";
 
@@ -33,24 +34,38 @@ const features = [
 ];
 
 function Workshop() {
+  const { ref: headingRef, isVisible: isHeadingVisible } = useReveal();
+  const { ref: imageRef, isVisible: isImageVisible } = useReveal();
+  const { ref: textRef, isVisible: isTextVisible } = useReveal();
+
   return (
     <section
       className="bg-warm py-[clamp(4rem,8vw,7rem)] max-md:py-12"
       id="taller"
     >
       <Container>
-        <SectionHeading
-          eyebrow="Nuestro taller"
-          title={
-            <>
-              Donde la perfección se <br className="max-md:hidden" />
-              encuentra con la tecnología
-            </>
-          }
-          description="Equipamiento de última generación y un equipo apasionado por el cuidado automotriz."
-        />
+        <div
+          className={`reveal ${isHeadingVisible ? "reveal-visible" : ""}`}
+          ref={headingRef}
+        >
+          <SectionHeading
+            eyebrow="Nuestro taller"
+            title={
+              <>
+                Donde la perfección se <br className="max-md:hidden" />
+                encuentra con la tecnología
+              </>
+            }
+            description="Equipamiento de última generación y un equipo apasionado por el cuidado automotriz."
+          />
+        </div>
         <div className="mt-12 grid grid-cols-2 items-center gap-12 max-md:mt-6 max-md:grid-cols-1 max-md:gap-6">
-          <div className="relative overflow-hidden rounded-[20px]">
+          <div
+            className={`reveal relative overflow-hidden rounded-[20px] ${
+              isImageVisible ? "reveal-visible" : ""
+            }`}
+            ref={imageRef}
+          >
             <img
               alt="Interior del taller de detailing"
               className="h-auto w-full"
@@ -73,7 +88,11 @@ function Workshop() {
               Taller certificado
             </div>
           </div>
-          <div>
+          <div
+            className={`reveal ${isTextVisible ? "reveal-visible" : ""}`}
+            ref={textRef}
+            style={{ transitionDelay: "0.2s" }}
+          >
             <h3 className="mb-4 font-heading text-[1.5rem] font-bold text-navy max-md:mb-3 max-md:leading-[1.35]">
               Un espacio diseñado para el cuidado de tu vehículo
             </h3>

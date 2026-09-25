@@ -1,4 +1,5 @@
 import { business } from "../data/business.js";
+import { useReveal } from "../hooks/useReveal.js";
 import Container from "../../../shared/ui/Container.jsx";
 import SectionHeading from "../../../shared/ui/SectionHeading.jsx";
 import ContactForm from "./ContactForm.jsx";
@@ -46,17 +47,37 @@ function PhoneIcon() {
 }
 
 function ContactSection({ selectedService }) {
+  const { ref: headingRef, isVisible: isHeadingVisible } = useReveal();
+  const { ref: formRef, isVisible: isFormVisible } = useReveal();
+  const { ref: infoRef, isVisible: isInfoVisible } = useReveal();
+
   return (
     <section className="bg-warm py-[clamp(4rem,8vw,7rem)]" id="consulta">
       <Container>
-        <SectionHeading
-          description="Completá el formulario y te contactamos por WhatsApp con toda la información que necesitás."
-          eyebrow="Consulta"
-          title="Contanos sobre tu vehículo"
-        />
+        <div
+          className={`reveal ${isHeadingVisible ? "reveal-visible" : ""}`}
+          ref={headingRef}
+        >
+          <SectionHeading
+            description="Completá el formulario y te contactamos por WhatsApp con toda la información que necesitás."
+            eyebrow="Consulta"
+            title="Contanos sobre tu vehículo"
+          />
+        </div>
         <div className="mt-12 grid grid-cols-2 gap-12 max-md:grid-cols-1">
-          <ContactForm selectedService={selectedService} />
-          <div className="flex flex-col gap-6">
+          <div
+            className={`reveal ${isFormVisible ? "reveal-visible" : ""}`}
+            ref={formRef}
+          >
+            <ContactForm selectedService={selectedService} />
+          </div>
+          <div
+            className={`reveal flex flex-col gap-6 ${
+              isInfoVisible ? "reveal-visible" : ""
+            }`}
+            ref={infoRef}
+            style={{ transitionDelay: "0.2s" }}
+          >
             <div className="rounded-[20px] bg-navy p-8 text-white">
               <h4 className="mb-4 font-heading text-[1.1rem] font-bold">
                 ¿Como llego?

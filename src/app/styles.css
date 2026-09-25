@@ -22,6 +22,24 @@ body {
   font-family: var(--font-body);
 }
 
+:focus-visible {
+  outline: 3px solid var(--color-lime);
+  outline-offset: 3px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .hero-scroll {
   animation: hero-bounce 2s infinite;
 }
@@ -67,5 +85,15 @@ body {
 @keyframes whatsapp-pulse {
   50% {
     filter: drop-shadow(0 0 12px rgba(37, 211, 102, 0.45));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

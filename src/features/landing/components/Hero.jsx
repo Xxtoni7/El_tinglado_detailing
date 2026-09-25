@@ -1,6 +1,13 @@
+import { useEffect, useRef, useState } from "react";
 import heroImage from "../../../assets/images/hero.jpg";
 import logo from "../../../assets/images/Logo.jpeg";
 import Container from "../../../shared/ui/Container.jsx";
+
+const stats = [
+  { value: "+500", label: "Vehículos atendidos" },
+  { value: "4.9★", label: "En Google Maps" },
+  { value: "+12", label: "Años de experiencia" },
+];
 
 function WhatsAppIcon({ className = "" }) {
   return (
@@ -18,6 +25,87 @@ function WhatsAppIcon({ className = "" }) {
 export { WhatsAppIcon };
 
 function Hero() {
+  const heroBackgroundRef = useRef(null);
+  const heroStatsRef = useRef(null);
+  const [counterValues, setCounterValues] = useState(() =>
+    stats.map(({ value }) => value),
+  );
+
+  useEffect(() => {
+    function updateParallax() {
+      if (window.scrollY >= window.innerHeight || !heroBackgroundRef.current) {
+        return;
+      }
+
+      const offset = window.scrollY * 0.3;
+      heroBackgroundRef.current.style.transform = `translateY(${offset}px) scale(1.05)`;
+    }
+
+    window.addEventListener("scroll", updateParallax, { passive: true });
+    updateParallax();
+
+    return () => window.removeEventListener("scroll", updateParallax);
+  }, []);
+
+  useEffect(() => {
+    const heroStats = heroStatsRef.current;
+
+    if (!heroStats) return undefined;
+
+    let startTimer;
+    let counterInterval;
+
+    function startCounters() {
+      const counterParts = stats.map(({ value }) => {
+        const match = value.match(/\+?(\d+)/);
+        const target = Number.parseInt(match[1], 10);
+
+        return {
+          prefix: value.startsWith("+") ? "+" : "",
+          suffix: value.replace(/\+?\d+/, ""),
+          target,
+        };
+      });
+      const steps = 60;
+      let currentStep = 0;
+
+      setCounterValues(
+        counterParts.map(({ prefix, suffix }) => `${prefix}0${suffix}`),
+      );
+
+      counterInterval = window.setInterval(() => {
+        currentStep += 1;
+
+        setCounterValues(
+          counterParts.map(
+            ({ prefix, suffix, target }) =>
+              `${prefix}${Math.floor((target / steps) * currentStep)}${suffix}`,
+          ),
+        );
+
+        if (currentStep >= steps) window.clearInterval(counterInterval);
+      }, 2000 / steps);
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          startTimer = window.setTimeout(startCounters, 500);
+          observer.unobserve(heroStats);
+        }
+      },
+      { threshold: 0.3 },
+    );
+
+    observer.observe(heroStats);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(startTimer);
+      window.clearInterval(counterInterval);
+    };
+  }, []);
+
   return (
     <section
       className="relative flex min-h-screen items-center overflow-hidden"
@@ -29,6 +117,7 @@ function Hero() {
           className="size-full object-cover brightness-[.35] max-md:object-[58%_68%]"
           height="1080"
           loading="eager"
+          ref={heroBackgroundRef}
           src={heroImage}
           width="1920"
         />
@@ -86,15 +175,14 @@ function Hero() {
             />
           </div>
         </div>
-        <div className="mx-auto mt-[clamp(2.5rem,5vh,4rem)] flex justify-center gap-12 border-t border-white/10 pt-8 max-md:gap-6 max-sm:justify-between max-sm:gap-2">
-          {[
-            ["+500", "Vehículos atendidos"],
-            ["4.9★", "En Google Maps"],
-            ["+12", "Años de experiencia"],
-          ].map(([number, label]) => (
+        <div
+          className="mx-auto mt-[clamp(2.5rem,5vh,4rem)] flex justify-center gap-12 border-t border-white/10 pt-8 max-md:gap-6 max-sm:justify-between max-sm:gap-2"
+          ref={heroStatsRef}
+        >
+          {stats.map(({ label }, index) => (
             <div className="min-w-0 text-center max-sm:flex-1" key={label}>
               <div className="font-heading text-2xl font-extrabold text-lime max-md:text-2xl">
-                {number}
+                {counterValues[index]}
               </div>
               <div className="mt-1 text-[0.8rem] tracking-[0.05em] text-white/50 uppercase">
                 {label}

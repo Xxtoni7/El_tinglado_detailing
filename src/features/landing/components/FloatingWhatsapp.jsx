@@ -1,10 +1,29 @@
+import { useEffect, useState } from "react";
 import { business } from "../data/business.js";
 import { WhatsAppIcon } from "./Hero.jsx";
 
 function FloatingWhatsapp() {
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
+
+  useEffect(() => {
+    const footer = document.querySelector("footer");
+
+    if (!footer) return undefined;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsFooterVisible(entry.isIntersecting);
+    });
+
+    observer.observe(footer);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div
-      className="whatsapp-float fixed right-8 bottom-8 z-[999] flex flex-col items-end gap-3 max-sm:right-5 max-sm:bottom-5"
+      className={`whatsapp-float fixed right-8 bottom-8 z-[999] flex flex-col items-end gap-3 transition-opacity max-sm:right-5 max-sm:bottom-5 ${
+        isFooterVisible ? "pointer-events-none opacity-0" : "opacity-100"
+      }`}
       id="whatsappFloat"
     >
       <span className="rounded-xl bg-white px-5 py-3 text-[.85rem] font-semibold whitespace-nowrap text-navy opacity-0 shadow-[0_8px_32px_rgba(0,0,0,.2)] translate-y-2 transition group-hover:translate-y-0 group-hover:opacity-100">

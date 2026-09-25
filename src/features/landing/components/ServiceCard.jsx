@@ -1,6 +1,16 @@
-function ServiceCard({ service, onConsult }) {
+import { useReveal } from "../hooks/useReveal.js";
+
+function ServiceCard({ service, onConsult, revealDelay }) {
+  const { ref, isVisible } = useReveal();
+
   return (
-    <article className="group flex flex-col overflow-hidden rounded-[20px] border border-white/[.06] bg-navy-light transition hover:-translate-y-1.5 hover:border-lime/20">
+    <article
+      className={`reveal group flex flex-col overflow-hidden rounded-[20px] border border-white/[.06] bg-navy-light transition hover:-translate-y-1.5 hover:border-lime/20 ${
+        isVisible ? "reveal-visible" : ""
+      }`}
+      ref={ref}
+      style={{ transitionDelay: `${revealDelay}ms` }}
+    >
       <div className="relative h-[220px] overflow-hidden after:absolute after:inset-0 after:bg-linear-to-t after:from-navy-light after:to-transparent after:to-60%">
         <img
           alt={service.alt}
