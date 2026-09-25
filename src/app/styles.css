@@ -21,3 +21,31 @@ body {
   background: var(--color-warm);
   font-family: var(--font-body);
 }
+
+.hero-scroll {
+  animation: hero-bounce 2s infinite;
+}
+
+.hero-scroll > div {
+  position: relative;
+}
+
+.hero-scroll > div::after {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 3px;
+  height: 8px;
+  border-radius: 3px;
+  background: var(--color-lime);
+  content: '';
+  animation: scroll-dot 2s infinite;
+}
+
+@keyframes hero-bounce {
+  50% { transform: translateY(8px); }
+}
+
+@keyframes scroll-dot {
+  to { top: 20px; opacity: 0; }
+}
