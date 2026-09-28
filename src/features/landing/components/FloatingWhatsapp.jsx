@@ -21,7 +21,7 @@ function FloatingWhatsapp() {
 
   return (
     <div
-      className={`whatsapp-float fixed right-8 bottom-8 z-[999] flex flex-col items-end gap-3 transition-opacity max-sm:right-5 max-sm:bottom-5 ${
+      className={`whatsapp-float fixed right-8 bottom-8 z-999 flex flex-col items-end gap-3 transition-opacity max-sm:right-5 max-sm:bottom-5 ${
         isFooterVisible ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
       id="whatsappFloat"
@@ -31,13 +31,13 @@ function FloatingWhatsapp() {
       </span>
       <a
         aria-label="Contactar por WhatsApp"
-        className="whatsapp-float-btn flex size-[60px] items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_4px_24px_rgba(37,211,102,.4)] transition hover:scale-110 hover:shadow-[0_6px_32px_rgba(37,211,102,.5)] max-sm:size-[52px]"
+        className="whatsapp-float-btn flex size-15 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_4px_24px_rgba(37,211,102,.4)] transition hover:scale-110 hover:shadow-[0_6px_32px_rgba(37,211,102,.5)] max-sm:size-13"
         href={`https://wa.me/${business.whatsappNumber}?text=Hola!%20Vengo%20desde%20la%20web%20y%20quiero%20consultar%20por%20los%20servicios.`}
         id="floating-whatsapp-btn"
         rel="noopener noreferrer"
         target="_blank"
       >
-        <WhatsAppIcon className="size-[30px] max-sm:size-[26px]" />
+        <WhatsAppIcon className="size-7.5 max-sm:size-6.5" />
       </a>
     </div>
   );
