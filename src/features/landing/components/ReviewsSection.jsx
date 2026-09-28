@@ -19,6 +19,7 @@ function ReviewsSection() {
           >
             <SectionHeading
               eyebrow="Reseñas"
+              eyebrowId="resenas-eyebrow"
               title={
                 <>
                   Lo que dicen <br />

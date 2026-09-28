@@ -21,6 +21,7 @@ function ServicesSection({ onConsult }) {
         >
           <SectionHeading
             eyebrow="Servicios"
+            eyebrowId="servicios-eyebrow"
             title={
               <>
                 Soluciones profesionales <br />

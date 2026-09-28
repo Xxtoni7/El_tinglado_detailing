@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const sectionIds = ["inicio", "taller", "servicios", "resenas", "consulta"];
 
@@ -6,10 +6,16 @@ export function useHeaderState() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("inicio");
+  const navigationTarget = useRef(null);
+  const updateHeaderRef = useRef(() => {});
 
   useEffect(() => {
     function updateHeader() {
       setIsScrolled(window.scrollY > 60);
+
+      if (navigationTarget.current) {
+        return;
+      }
 
       const scrollPosition = window.scrollY + 120;
 
@@ -27,11 +33,25 @@ export function useHeaderState() {
       }
     }
 
+    updateHeaderRef.current = updateHeader;
     window.addEventListener("scroll", updateHeader, { passive: true });
     updateHeader();
 
-    return () => window.removeEventListener("scroll", updateHeader);
+    return () => {
+      updateHeaderRef.current = () => {};
+      window.removeEventListener("scroll", updateHeader);
+    };
   }, []);
+
+  function setNavigationTarget(id) {
+    navigationTarget.current = id;
+    setActiveSection(id);
+  }
+
+  function resumeSectionTracking() {
+    navigationTarget.current = null;
+    updateHeaderRef.current();
+  }
 
   return {
     activeSection,
@@ -39,5 +59,7 @@ export function useHeaderState() {
     isScrolled,
     toggleMenu: () => setIsMenuOpen((open) => !open),
     closeMenu: () => setIsMenuOpen(false),
+    setNavigationTarget,
+    resumeSectionTracking,
   };
 }

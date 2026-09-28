@@ -50,6 +50,7 @@ function Workshop() {
         >
           <SectionHeading
             eyebrow="Nuestro taller"
+            eyebrowId="taller-eyebrow"
             title={
               <>
                 Donde la perfección se <br className="max-md:hidden" />

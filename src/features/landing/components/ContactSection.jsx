@@ -61,6 +61,7 @@ function ContactSection({ selectedService }) {
           <SectionHeading
             description="Completá el formulario y te contactamos por WhatsApp con toda la información que necesitás."
             eyebrow="Consulta"
+            eyebrowId="consulta-eyebrow"
             title="Contanos sobre tu vehículo"
           />
         </div>
