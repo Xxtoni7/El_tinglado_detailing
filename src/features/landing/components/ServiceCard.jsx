@@ -5,16 +5,16 @@ function ServiceCard({ service, onConsult, revealDelay }) {
 
   return (
     <article
-      className={`reveal group flex flex-col overflow-hidden rounded-[20px] border border-white/[.06] bg-navy-light transition hover:-translate-y-1.5 hover:border-lime/20 ${
+      className={`reveal group flex flex-col overflow-hidden rounded-[20px] border border-white/6 bg-navy-light transition hover:-translate-y-1.5 hover:border-lime/20 ${
         isVisible ? "reveal-visible" : ""
       }`}
       ref={ref}
       style={{ transitionDelay: `${revealDelay}ms` }}
     >
-      <div className="relative h-[220px] overflow-hidden after:absolute after:inset-0 after:bg-linear-to-t after:from-navy-light after:to-transparent after:to-60%">
+      <div className="relative h-55 overflow-hidden after:absolute after:inset-0 after:bg-linear-to-t after:from-navy-light after:to-transparent after:to-60%">
         <img
           alt={service.alt}
-          className="size-full object-cover transition duration-[600ms] group-hover:scale-[1.08]"
+          className="size-full object-cover transition duration-600 group-hover:scale-[1.08]"
           height="400"
           loading="lazy"
           src={service.image}
@@ -31,14 +31,14 @@ function ServiceCard({ service, onConsult, revealDelay }) {
         <div className="mb-5 flex flex-wrap gap-2">
           {service.tags.map((tag) => (
             <span
-              className="rounded-full border border-lime/15 bg-lime/[.08] px-[0.8rem] py-[0.3rem] text-[0.75rem] font-semibold text-lime"
+              className="rounded-full border border-lime/15 bg-lime/8 px-[0.8rem] py-[0.3rem] text-[0.75rem] font-semibold text-lime"
               key={tag}
             >
               {tag}
             </span>
           ))}
         </div>
-        <div className="mt-auto border-t border-white/[.06] pt-5">
+        <div className="mt-auto border-t border-white/6 pt-5">
           <a
             className="flex min-h-12 w-full items-center justify-center rounded-full bg-lime px-5 py-[0.85rem] text-[0.9rem] font-bold tracking-[0.01em] text-navy shadow-[0_10px_22px_rgba(200,230,50,.16)] transition hover:-translate-y-0.5 hover:bg-lime-dark hover:shadow-[0_14px_28px_rgba(200,230,50,.22)]"
             href="#consulta"
