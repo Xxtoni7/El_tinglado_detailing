@@ -83,7 +83,7 @@ function Footer() {
             <a
               aria-label="WhatsApp"
               className="flex size-10 items-center justify-center rounded-full bg-white/[.06] text-white/50 transition hover:bg-lime hover:text-navy"
-              href={`https://wa.me/${business.whatsappNumber}`}
+              href={`https://wa.me/${business.whatsappNumber}?text=Hola!%20Vengo%20desde%20la%20web%20y%20quiero%20consultar%20por%20los%20servicios.`}
               id="footer-whatsapp"
               rel="noopener noreferrer"
               target="_blank"

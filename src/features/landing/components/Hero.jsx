@@ -153,7 +153,7 @@ function Hero() {
             >
               <a
                 className="inline-flex items-center gap-2 rounded-full bg-lime px-8 py-4 text-base font-bold text-navy transition hover:scale-105 hover:shadow-[0_0_24px_rgba(200,230,50,0.25)] max-sm:justify-center"
-                href="https://wa.me/5491125237023?text=Hola!%20Quiero%20consultar%20por%20los%20servicios%20de%20detailing"
+                href="https://wa.me/5491125237023?text=Hola!%20Vengo%20desde%20la%20web%20y%20quiero%20consultar%20por%20los%20servicios."
                 id="hero-whatsapp-btn"
                 rel="noopener noreferrer"
                 target="_blank"

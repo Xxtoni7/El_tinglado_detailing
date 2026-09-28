@@ -32,7 +32,7 @@ function FloatingWhatsapp() {
       <a
         aria-label="Contactar por WhatsApp"
         className="whatsapp-float-btn flex size-[60px] items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_4px_24px_rgba(37,211,102,.4)] transition hover:scale-110 hover:shadow-[0_6px_32px_rgba(37,211,102,.5)] max-sm:size-[52px]"
-        href={`https://wa.me/${business.whatsappNumber}?text=Hola!%20Quiero%20consultar%20por%20los%20servicios%20de%20detailing`}
+        href={`https://wa.me/${business.whatsappNumber}?text=Hola!%20Vengo%20desde%20la%20web%20y%20quiero%20consultar%20por%20los%20servicios.`}
         id="floating-whatsapp-btn"
         rel="noopener noreferrer"
         target="_blank"
