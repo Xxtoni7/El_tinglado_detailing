@@ -36,6 +36,27 @@ function getElementTopWithoutTransform(element) {
   return element.getBoundingClientRect().top + window.scrollY - translateY;
 }
 
+function scrollToServices(event) {
+  const eyebrow = document.getElementById("servicios-eyebrow");
+
+  if (!eyebrow) {
+    return;
+  }
+
+  event.preventDefault();
+  window.history.pushState(null, "", "#servicios");
+
+  const scrollPaddingTop = Number.parseFloat(
+    getComputedStyle(document.documentElement).scrollPaddingTop,
+  );
+  const top = getElementTopWithoutTransform(eyebrow) - scrollPaddingTop;
+
+  window.scrollTo({
+    behavior: "smooth",
+    top: Math.max(0, top),
+  });
+}
+
 function Hero() {
   const heroBackgroundRef = useRef(null);
   const heroStatsRef = useRef(null);
@@ -62,27 +83,6 @@ function Hero() {
 
     return () => window.removeEventListener("scroll", updateParallax);
   }, []);
-
-  function scrollToServices(event) {
-    const eyebrow = document.getElementById("servicios-eyebrow");
-
-    if (!eyebrow) {
-      return;
-    }
-
-    event.preventDefault();
-    window.history.pushState(null, "", "#servicios");
-
-    const scrollPaddingTop = Number.parseFloat(
-      getComputedStyle(document.documentElement).scrollPaddingTop,
-    );
-    const top = getElementTopWithoutTransform(eyebrow) - scrollPaddingTop;
-
-    window.scrollTo({
-      behavior: "smooth",
-      top: Math.max(0, top),
-    });
-  }
 
   useEffect(() => {
     const heroStats = heroStatsRef.current;

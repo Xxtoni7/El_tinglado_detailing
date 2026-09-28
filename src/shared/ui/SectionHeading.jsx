@@ -1,4 +1,10 @@
-function SectionHeading({ eyebrow, eyebrowId, title, description }) {
+function SectionHeading({
+  eyebrow,
+  eyebrowId,
+  title,
+  description,
+  descriptionClassName = "",
+}) {
   return (
     <>
       <span
@@ -11,7 +17,9 @@ function SectionHeading({ eyebrow, eyebrowId, title, description }) {
         {title}
       </h2>
       {description ? (
-      <p className="max-w-150 text-[1.1rem] leading-[1.7] text-[#6E6A64]">
+        <p
+          className={`max-w-150 text-[1.1rem] leading-[1.7] text-[#6E6A64] ${descriptionClassName}`}
+        >
           {description}
         </p>
       ) : null}
