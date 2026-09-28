@@ -42,7 +42,7 @@ function ServiceCard({ service, onConsult, revealDelay }) {
           <a
             className="flex min-h-12 w-full items-center justify-center rounded-full bg-lime px-5 py-[0.85rem] text-[0.9rem] font-bold tracking-[0.01em] text-navy shadow-[0_10px_22px_rgba(200,230,50,.16)] transition hover:-translate-y-0.5 hover:bg-lime-dark hover:shadow-[0_14px_28px_rgba(200,230,50,.22)]"
             href="#consulta"
-            onClick={() => onConsult(service.name)}
+            onClick={(event) => onConsult(event, service.name)}
           >
             Consultar
           </a>

@@ -7,9 +7,15 @@ import Hero from "../features/landing/components/Hero.jsx";
 import ReviewsSection from "../features/landing/components/ReviewsSection.jsx";
 import ServicesSection from "../features/landing/components/ServicesSection.jsx";
 import Workshop from "../features/landing/components/Workshop.jsx";
+import { navigateToContactForm } from "../features/landing/lib/consultationNavigation.js";
 
 function App() {
   const [selectedService, setSelectedService] = useState("");
+
+  function consultService(event, serviceName) {
+    navigateToContactForm({ event });
+    setSelectedService(serviceName);
+  }
 
   return (
     <>
@@ -17,7 +23,7 @@ function App() {
       <main aria-label="El tinglado Detailing">
         <Hero />
         <Workshop />
-        <ServicesSection onConsult={setSelectedService} />
+        <ServicesSection onConsult={consultService} />
         <ReviewsSection />
         <ContactSection selectedService={selectedService} />
       </main>

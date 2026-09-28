@@ -43,7 +43,7 @@ function ReviewCard({ review, revealDelay }) {
         </div>
       </div>
       <div className="mb-4 flex gap-0.5 text-[#FBBF24] max-md:mb-[.65rem] max-md:gap-px">
-        <Stars className="size-4 max-md:size-[11px]" />
+        <Stars className="size-4 max-md:size-2.75" />
       </div>
       <p className="text-[.9rem] leading-[1.7] text-[#6E6A64] max-md:text-[.72rem] max-md:leading-[1.45]">
         {review.content}

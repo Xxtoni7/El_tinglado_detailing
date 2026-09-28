@@ -1,8 +1,8 @@
-import { serviceCategories, services } from "../data/services.js";
+import { serviceCategories } from "../data/services.js";
 import { useReveal } from "../hooks/useReveal.js";
 import Container from "../../../shared/ui/Container.jsx";
 import SectionHeading from "../../../shared/ui/SectionHeading.jsx";
-import ServiceCard from "./ServiceCard.jsx";
+import MobileServiceCatalog from "./MobileServiceCatalog.jsx";
 import ServiceCatalog from "./ServiceCatalog.jsx";
 
 function ServicesSection({ onConsult }) {
@@ -38,15 +38,11 @@ function ServicesSection({ onConsult }) {
             onConsult={onConsult}
           />
         </div>
-        <div className="mt-12 hidden grid-cols-[repeat(auto-fit,minmax(340px,1fr))] gap-6 max-lg:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] max-md:grid max-md:grid-cols-1">
-          {services.map((service, index) => (
-            <ServiceCard
-              key={service.name}
-              onConsult={onConsult}
-              revealDelay={index * 100}
-              service={service}
-            />
-          ))}
+        <div className="mt-10 hidden max-md:block">
+          <MobileServiceCatalog
+            categories={serviceCategories}
+            onConsult={onConsult}
+          />
         </div>
       </Container>
     </section>
