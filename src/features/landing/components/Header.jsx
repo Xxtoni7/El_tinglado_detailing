@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import logo from "../../../assets/images/Logo.png";
+import logo from "../../../assets/images/Logo.PNG";
 import { useHeaderState } from "../hooks/useHeaderState.js";
 import { navigation } from "../data/navigation.js";
 import Container from "../../../shared/ui/Container.jsx";
