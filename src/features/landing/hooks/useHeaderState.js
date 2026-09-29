@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
-const sectionIds = ["inicio", "taller", "servicios", "resenas", "consulta"];
+const sectionIds = [
+  "inicio",
+  "taller",
+  "servicios",
+  "trabajos",
+  "resenas",
+  "consulta",
+];
 
 export function useHeaderState() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
