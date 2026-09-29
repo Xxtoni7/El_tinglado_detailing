@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import heroVideo from "../../../assets/images/hero/heroVideo.mp4";
+import heroVideo from "../../../assets/images/hero/heroVideo.web.mp4";
 import logo from "../../../assets/images/Logo.PNG";
 import Container from "../../../shared/ui/Container.jsx";
 import Entrance from "../../../shared/ui/Entrance.jsx";
@@ -156,6 +156,7 @@ function Hero() {
           height="1080"
           loop
           muted
+          preload="auto"
           ref={heroBackgroundRef}
           src={heroVideo}
           width="1920"
