@@ -40,6 +40,19 @@ body {
   transform: translateY(0);
 }
 
+.review-card {
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s;
+}
+
+@media (max-width: 767px) {
+  .review-card:active {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+}
+
 .hero-scroll {
   animation: hero-bounce 2s infinite;
 }
