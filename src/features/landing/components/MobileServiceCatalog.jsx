@@ -137,6 +137,7 @@ function MobileServiceCatalog({ categories, onConsult }) {
                           height="352"
                           loading="lazy"
                           src={service.image}
+                          style={{ objectPosition: service.imagePosition?.mobile }}
                           width="672"
                         />
                         <div className="absolute inset-0 bg-linear-to-t from-navy-light/65 via-transparent to-transparent" />

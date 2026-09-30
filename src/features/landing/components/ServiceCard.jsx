@@ -18,6 +18,7 @@ function ServiceCard({ service, onConsult, revealDelay }) {
           height="400"
           loading="lazy"
           src={service.image}
+          style={{ objectPosition: service.imagePosition?.desktop }}
           width="600"
         />
       </div>
