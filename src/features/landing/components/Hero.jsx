@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import heroVideo from "../../../assets/images/hero/heroVideo.web.mp4";
 import logo from "../../../assets/images/Logo.PNG";
 import Container from "../../../shared/ui/Container.jsx";
 import Entrance from "../../../shared/ui/Entrance.jsx";
@@ -148,7 +147,7 @@ function Hero() {
       className="relative flex min-h-screen items-center overflow-hidden"
       id="inicio"
     >
-      <div className="absolute inset-0 before:absolute before:inset-0 before:z-10 before:bg-[linear-gradient(135deg,rgba(15,27,51,0.85),rgba(15,27,51,0.5)_50%,rgba(15,27,51,0.7))]">
+      <div className="absolute inset-0 bg-navy before:absolute before:inset-0 before:z-10 before:bg-[linear-gradient(135deg,rgba(15,27,51,0.85),rgba(15,27,51,0.5)_50%,rgba(15,27,51,0.7))]">
         <video
           autoPlay
           playsInline
@@ -158,7 +157,7 @@ function Hero() {
           muted
           preload="auto"
           ref={heroBackgroundRef}
-          src={heroVideo}
+          src="/hero-video.mp4"
           width="1920"
         />
       </div>
