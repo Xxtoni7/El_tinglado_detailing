@@ -1,8 +1,9 @@
 import { useReveal } from "../hooks/useReveal.js";
 
-function FeaturedProject({ onContact, project }) {
+function FeaturedProject({ onContact, projects }) {
   const { ref: imageRef, isVisible: isImageVisible } = useReveal();
   const { ref: contentRef, isVisible: isContentVisible } = useReveal();
+  const { primary: primaryProject, detail: detailProject } = projects;
 
   return (
     <article className="grid gap-6 md:grid-cols-12 md:items-start md:gap-8">
@@ -13,10 +14,10 @@ function FeaturedProject({ onContact, project }) {
         ref={imageRef}
       >
         <img
-          alt={project.primaryAlt}
+          alt={primaryProject.alt}
           className="aspect-16/10 h-full w-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 max-md:active:scale-105"
           loading="lazy"
-          src={project.primaryImage}
+          src={primaryProject.image}
         />
       </div>
       <div
@@ -30,20 +31,20 @@ function FeaturedProject({ onContact, project }) {
           Trabajo destacado
         </p>
         <h3 className="mt-2 font-heading text-[clamp(1.6rem,2.4vw,2.3rem)] leading-[1.08] font-bold text-navy">
-          {project.vehicle}
+          {detailProject.vehicle}
         </h3>
         <p className="mt-3 text-base font-semibold text-navy">
-          {project.service}
+          {detailProject.service}
         </p>
         <p className="mt-4 leading-[1.7] text-[#6E6A64]">
-          {project.description}
+          {detailProject.description}
         </p>
         <div className="mt-6 overflow-hidden rounded-2xl bg-navy">
           <img
-            alt={project.detailAlt}
+            alt={detailProject.alt}
             className="aspect-square h-full w-full object-cover"
             loading="lazy"
-            src={project.detailImage}
+            src={detailProject.image}
           />
         </div>
         <a

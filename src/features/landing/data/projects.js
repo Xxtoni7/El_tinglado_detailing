@@ -1,5 +1,5 @@
-const bmwPrimaryImage = new URL(
-  "../../../assets/images/Trabajos/bmw1.webp",
+const volkswagenGolfImage = new URL(
+  "../../../assets/images/Trabajos/vwGris2.webp",
   import.meta.url,
 ).href;
 const bmwDetailImage = new URL(
@@ -31,17 +31,21 @@ const wheelAfterImage = new URL(
   import.meta.url,
 ).href;
 
-export const featuredProject = {
-  id: "bmw",
-  vehicle: "BMW",
-  service: "Tratamiento cerámico",
-  description:
-    "Tratamiento cerámico para potenciar el brillo, los reflejos y la protección de la pintura.",
-  primaryImage: bmwPrimaryImage,
-  detailImage: bmwDetailImage,
-  primaryAlt:
-    "BMW azul con tratamiento cerámico bajo la iluminación del taller",
-  detailAlt: "Detalle del acabado cerámico aplicado sobre un BMW azul",
+export const featuredProjects = {
+  primary: {
+    id: "volkswagen-golf",
+    image: volkswagenGolfImage,
+    alt: "Volkswagen Golf gris con acabado detallado bajo la iluminación del taller",
+  },
+  detail: {
+    id: "bmw",
+    vehicle: "BMW",
+    service: "Tratamiento cerámico",
+    description:
+      "Tratamiento cerámico para potenciar el brillo, los reflejos y la protección de la pintura.",
+    image: bmwDetailImage,
+    alt: "Detalle del acabado cerámico aplicado sobre un BMW azul",
+  },
 };
 
 export const galleryProjects = [

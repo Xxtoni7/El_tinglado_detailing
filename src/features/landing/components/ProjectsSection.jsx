@@ -1,4 +1,4 @@
-import { featuredProject, galleryProjects, motorcycleProject, wheelProject } from "../data/projects.js";
+import { featuredProjects, galleryProjects, motorcycleProject, wheelProject } from "../data/projects.js";
 import { useReveal } from "../hooks/useReveal.js";
 import Container from "../../../shared/ui/Container.jsx";
 import SectionHeading from "../../../shared/ui/SectionHeading.jsx";
@@ -25,7 +25,7 @@ function ProjectsSection({ onContact }) {
           />
         </div>
         <div className="mt-14 max-md:mt-10">
-          <FeaturedProject onContact={onContact} project={featuredProject} />
+          <FeaturedProject onContact={onContact} projects={featuredProjects} />
           <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
             {galleryProjects.map((project, index) => (
               <ProjectTile
