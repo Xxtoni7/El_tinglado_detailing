@@ -67,8 +67,8 @@ function ContactForm({ selectedService }) {
             value={formData.name}
           />
         </div>
-        <div className="grid grid-cols-3 gap-4 max-md:grid-cols-1">
-          <div className="mb-5">
+        <div className="grid grid-cols-3 gap-4">
+          <div className="col-span-3 mb-5 md:col-span-1">
             <label className={labelClass} htmlFor="marca">
               Marca *
             </label>
@@ -82,7 +82,7 @@ function ContactForm({ selectedService }) {
               value={formData.brand}
             />
           </div>
-          <div className="mb-5">
+          <div className="col-span-2 mb-5 md:col-span-1">
             <label className={labelClass} htmlFor="modelo">
               Modelo *
             </label>
