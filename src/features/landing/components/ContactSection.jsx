@@ -3,6 +3,7 @@ import { useReveal } from "../hooks/useReveal.js";
 import Container from "../../../shared/ui/Container.jsx";
 import SectionHeading from "../../../shared/ui/SectionHeading.jsx";
 import ContactForm from "./ContactForm.jsx";
+import LocationMapCard from "./LocationMapCard.jsx";
 
 function PinIcon() {
   return (
@@ -18,6 +19,25 @@ function PinIcon() {
     </svg>
   );
 }
+
+function InstagramIcon() {
+  return (
+    <svg
+      className="mt-0.5 size-5 shrink-0 text-lime"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <rect height="20" rx="5" ry="5" width="20" x="2" y="2" />
+      <circle cx="12" cy="12" r="4" />
+      <path d="M17.5 6.5h.01" />
+    </svg>
+  );
+}
+
 function ClockIcon() {
   return (
     <svg
@@ -107,26 +127,22 @@ function ContactSection({ selectedService }) {
                 </div>
               </div>
               <a
-                className="mt-4 inline-flex items-center gap-2 rounded-full bg-lime px-5 py-[.7rem] text-[.85rem] font-semibold text-navy transition hover:scale-[1.03]"
-                href={business.googleMapsUrl}
-                id="contact-map-link"
+                className="group flex items-start gap-3 text-[.9rem] text-white/70 transition hover:text-lime"
+                href={business.instagramUrl}
+                id="contact-instagram-link"
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <PinIcon />
-                Cómo llegar
+                <InstagramIcon />
+                <div>
+                  <strong className="block text-white">Instagram</strong>
+                  <span className="underline decoration-white/25 underline-offset-4">
+                    El Tinglado Detailing
+                  </span>
+                </div>
               </a>
             </div>
-            <div className="h-[250px] overflow-hidden rounded-[20px] border-2 border-navy-light">
-              <iframe
-                allowFullScreen
-                className="size-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                src={business.mapEmbedUrl}
-                title="Ubicación del taller en General Pacheco"
-              />
-            </div>
+            <LocationMapCard />
           </div>
         </div>
       </Container>

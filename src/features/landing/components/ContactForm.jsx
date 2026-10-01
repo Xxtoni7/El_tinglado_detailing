@@ -15,6 +15,7 @@ const initialFormData = {
 function ContactForm({ selectedService }) {
   const [formData, setFormData] = useState(initialFormData);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const currentYear = new Date().getFullYear();
 
   function updateField(event) {
     const { name, value } = event.target;
@@ -102,8 +103,8 @@ function ContactForm({ selectedService }) {
             <input
               className={fieldClass}
               id="anio"
-              max="2027"
-              min="1990"
+              max={currentYear}
+              min="1980"
               name="year"
               onChange={updateField}
               placeholder="Ej: 2023"
@@ -141,7 +142,7 @@ function ContactForm({ selectedService }) {
             Comentario (opcional)
           </label>
           <textarea
-            className={`${fieldClass} min-h-[100px] resize-y`}
+            className={`${fieldClass} min-h-25 resize-y`}
             id="comentario"
             name="comment"
             onChange={updateField}
@@ -172,7 +173,10 @@ function ContactForm({ selectedService }) {
           ) : (
             <>
               <WhatsAppIcon className="size-5" />
-              Enviar consulta por WhatsApp
+              <span className="md:hidden">Enviar consulta</span>
+              <span className="hidden md:inline">
+                Enviar consulta por WhatsApp
+              </span>
             </>
           )}
         </button>

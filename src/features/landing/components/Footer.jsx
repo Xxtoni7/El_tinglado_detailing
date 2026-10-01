@@ -7,7 +7,7 @@ function Footer() {
   return (
     <footer className="border-t border-lime/15 bg-navy pt-12 pb-6">
       <Container>
-        <div className="flex flex-wrap items-center justify-between gap-6 border-b border-white/[.06] pb-8 max-md:flex-col max-md:text-center">
+        <div className="flex flex-wrap items-center justify-between gap-6 border-b border-white/6 pb-8 max-md:flex-col max-md:text-center">
           <div className="flex items-center gap-2 font-heading text-[1.3rem] font-extrabold text-white">
             <img
               alt="El tinglado Detailing"
@@ -55,6 +55,8 @@ function Footer() {
               className="flex size-10 items-center justify-center rounded-full bg-white/[.06] text-white/50 transition hover:bg-lime hover:text-navy"
               href={business.instagramUrl}
               id="footer-instagram"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               <svg
                 className="size-5"
