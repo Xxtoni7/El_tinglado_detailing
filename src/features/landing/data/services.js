@@ -111,6 +111,7 @@ export const services = [
     description:
       'Renovación estética de llantas para recuperar su presencia y acompañar el acabado general del vehículo.',
     image: llanta,
+      imagePosition: { desktop: '50% 30%', mobile: '50% 30%' },
     alt: 'Pintura de llantas automotrices',
     tags: ['Renovación estética', 'Mejor terminación'],
   },
