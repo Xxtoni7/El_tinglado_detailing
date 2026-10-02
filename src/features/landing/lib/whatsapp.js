@@ -1,5 +1,12 @@
 import { business } from "../data/business.js";
 
+const defaultInquiryMessage =
+  "Hola! Vengo desde la web y quiero consultar por los servicios.";
+
+export function buildGeneralWhatsAppUrl() {
+  return `https://wa.me/${business.whatsappNumber}?text=${encodeURIComponent(defaultInquiryMessage)}`;
+}
+
 export function buildWhatsAppUrl({
   name,
   brand,
