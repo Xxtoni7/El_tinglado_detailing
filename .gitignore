@@ -31,3 +31,6 @@ desktop.ini
 
 # Local Superpowers execution workspace
 .superpowers/
+
+# Local project documentation
+docs/
