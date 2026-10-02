@@ -206,7 +206,7 @@ function Hero() {
               <div className="font-heading text-2xl font-extrabold text-lime max-md:text-2xl">
                 {counterValues[index]}
               </div>
-              <div className="mt-1 text-[0.8rem] tracking-wider text-white/50 uppercase">
+              <div className="mt-1 text-[0.8rem] tracking-wider text-white/65 uppercase">
                 {label}
               </div>
             </div>
