@@ -1,66 +1,25 @@
-import { useRef } from "react";
 import logo from "../../../../assets/images/Logo.PNG";
 import { useHeaderState } from "../../hooks/useHeaderState.js";
 import { navigation } from "../../data/navigation.js";
+import { navigateToSection } from "../../lib/sectionNavigation.js";
 import Container from "../../../../shared/ui/Container.jsx";
 
-function getElementTopWithoutTransform(element) {
-  const revealContainer = element.closest(".reveal");
-  const transform = revealContainer
-    ? getComputedStyle(revealContainer).transform
-    : "none";
-  const translateY =
-    transform === "none" ? 0 : new DOMMatrixReadOnly(transform).m42;
-
-  return element.getBoundingClientRect().top + window.scrollY - translateY;
-}
-
 function Header() {
-  const navigationSequence = useRef(0);
   const {
     activeSection,
     isMenuOpen,
     isScrolled,
     toggleMenu,
     closeMenu,
-    setNavigationTarget,
-    resumeSectionTracking,
   } = useHeaderState();
 
   function scrollToSection(event, id, href) {
-    const eyebrow = document.getElementById(`${id}-eyebrow`);
-    const target = eyebrow ?? document.getElementById(id);
-
-    if (!target) {
-      return;
-    }
-
-    event.preventDefault();
-    setNavigationTarget(id);
-    window.history.pushState(null, "", href);
-
-    const scrollPaddingTop = Number.parseFloat(
-      getComputedStyle(document.documentElement).scrollPaddingTop,
-    );
-    const top = getElementTopWithoutTransform(target) - scrollPaddingTop;
-    const currentNavigation = navigationSequence.current + 1;
-
-    navigationSequence.current = currentNavigation;
-
-    function completeNavigation() {
-      if (navigationSequence.current !== currentNavigation) {
-        return;
-      }
-
-      resumeSectionTracking();
-    }
-
-    window.addEventListener("scrollend", completeNavigation, { once: true });
-    window.setTimeout(completeNavigation, 1000);
-
-    window.scrollTo({
-      behavior: "smooth",
-      top: Math.max(0, top),
+    navigateToSection({
+      activeSectionId: id,
+      event,
+      fallbackTargetId: id,
+      href,
+      targetId: `${id}-eyebrow`,
     });
   }
 

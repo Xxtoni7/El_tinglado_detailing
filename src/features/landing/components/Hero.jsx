@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import logo from "../../../assets/images/Logo.PNG";
+import { navigateToSection } from "../lib/sectionNavigation.js";
 import Container from "../../../shared/ui/Container.jsx";
 import Entrance from "../../../shared/ui/Entrance.jsx";
 
@@ -24,35 +25,13 @@ function WhatsAppIcon({ className = "" }) {
 
 export { WhatsAppIcon };
 
-function getElementTopWithoutTransform(element) {
-  const revealContainer = element.closest(".reveal");
-  const transform = revealContainer
-    ? getComputedStyle(revealContainer).transform
-    : "none";
-  const translateY =
-    transform === "none" ? 0 : new DOMMatrixReadOnly(transform).m42;
-
-  return element.getBoundingClientRect().top + window.scrollY - translateY;
-}
-
 function scrollToServices(event) {
-  const eyebrow = document.getElementById("servicios-eyebrow");
-
-  if (!eyebrow) {
-    return;
-  }
-
-  event.preventDefault();
-  window.history.pushState(null, "", "#servicios");
-
-  const scrollPaddingTop = Number.parseFloat(
-    getComputedStyle(document.documentElement).scrollPaddingTop,
-  );
-  const top = getElementTopWithoutTransform(eyebrow) - scrollPaddingTop;
-
-  window.scrollTo({
-    behavior: "smooth",
-    top: Math.max(0, top),
+  navigateToSection({
+    activeSectionId: "servicios",
+    event,
+    fallbackTargetId: "servicios",
+    href: "#servicios",
+    targetId: "servicios-eyebrow",
   });
 }
 

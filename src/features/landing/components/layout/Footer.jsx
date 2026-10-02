@@ -1,5 +1,6 @@
 import logo from "../../../../assets/images/Logo.PNG";
 import { business } from "../../data/business.js";
+import { navigateToSection } from "../../lib/sectionNavigation.js";
 import Container from "../../../../shared/ui/Container.jsx";
 
 const footerNavigation = [
@@ -80,6 +81,17 @@ function Footer() {
   const currentYear = new Date().getFullYear();
   const whatsAppUrl = `https://wa.me/${business.whatsappNumber}?text=Hola!%20Vengo%20desde%20la%20web%20y%20quiero%20consultar%20por%20los%20servicios.`;
 
+  function navigateFromFooter(event, href) {
+    const sectionId = href.slice(1);
+
+    navigateToSection({
+      activeSectionId: sectionId,
+      event,
+      href,
+      targetId: sectionId,
+    });
+  }
+
   return (
     <footer className="border-t border-lime/15 bg-navy pt-14 pb-7">
       <Container>
@@ -88,6 +100,7 @@ function Footer() {
             <a
               className="inline-flex items-center gap-3 font-heading text-[1.35rem] font-extrabold text-white transition hover:text-lime focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-lime"
               href="#inicio"
+              onClick={(event) => navigateFromFooter(event, "#inicio")}
             >
               <img
                 alt="El Tinglado Detailing"
@@ -133,6 +146,7 @@ function Footer() {
                   <a
                     className="inline-flex py-0.5 text-[.9rem] text-white/60 transition hover:translate-x-1 hover:text-white focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-lime"
                     href={href}
+                    onClick={(event) => navigateFromFooter(event, href)}
                   >
                     {label}
                   </a>

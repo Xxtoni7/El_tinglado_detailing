@@ -1,4 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import {
+  SECTION_NAVIGATION_END_EVENT,
+  SECTION_NAVIGATION_START_EVENT,
+} from "../lib/sectionNavigation.js";
 
 const sectionIds = [
   "inicio",
@@ -40,25 +44,49 @@ export function useHeaderState() {
       }
     }
 
+    function startSectionNavigation({ detail }) {
+      if (!sectionIds.includes(detail.sectionId)) {
+        return;
+      }
+
+      navigationTarget.current = detail;
+      setActiveSection(detail.sectionId);
+    }
+
+    function completeSectionNavigation({ detail }) {
+      if (navigationTarget.current?.navigationId !== detail.navigationId) {
+        return;
+      }
+
+      navigationTarget.current = null;
+      updateHeaderRef.current();
+    }
+
     updateHeaderRef.current = updateHeader;
     window.addEventListener("scroll", updateHeader, { passive: true });
+    window.addEventListener(
+      SECTION_NAVIGATION_START_EVENT,
+      startSectionNavigation,
+    );
+    window.addEventListener(
+      SECTION_NAVIGATION_END_EVENT,
+      completeSectionNavigation,
+    );
     updateHeader();
 
     return () => {
       updateHeaderRef.current = () => {};
       window.removeEventListener("scroll", updateHeader);
+      window.removeEventListener(
+        SECTION_NAVIGATION_START_EVENT,
+        startSectionNavigation,
+      );
+      window.removeEventListener(
+        SECTION_NAVIGATION_END_EVENT,
+        completeSectionNavigation,
+      );
     };
   }, []);
-
-  function setNavigationTarget(id) {
-    navigationTarget.current = id;
-    setActiveSection(id);
-  }
-
-  function resumeSectionTracking() {
-    navigationTarget.current = null;
-    updateHeaderRef.current();
-  }
 
   return {
     activeSection,
@@ -66,7 +94,5 @@ export function useHeaderState() {
     isScrolled,
     toggleMenu: () => setIsMenuOpen((open) => !open),
     closeMenu: () => setIsMenuOpen(false),
-    setNavigationTarget,
-    resumeSectionTracking,
   };
 }

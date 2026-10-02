@@ -33,20 +33,6 @@ function App() {
     return () => window.removeEventListener("hashchange", updateLegalDocument);
   }, []);
 
-  useEffect(() => {
-    if (legalDocument) {
-      return;
-    }
-
-    const sectionId = window.location.hash.slice(1);
-
-    if (sectionId) {
-      window.requestAnimationFrame(() => {
-        document.getElementById(sectionId)?.scrollIntoView();
-      });
-    }
-  }, [legalDocument]);
-
   function consultService(event, serviceName) {
     openContactForm(event);
     setSelectedService(serviceName);

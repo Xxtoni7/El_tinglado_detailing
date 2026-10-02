@@ -1,19 +1,16 @@
+import { navigateToSection } from "./sectionNavigation.js";
+
 export function navigateToContactForm({
   documentObject = document,
   event,
+  windowObject = window,
 }) {
-  event.preventDefault();
-
-  const contactForm = documentObject.getElementById("contactForm");
-
-  if (!contactForm) {
-    return false;
-  }
-
-  contactForm.scrollIntoView({
-    behavior: "smooth",
-    block: "start",
+  return navigateToSection({
+    activeSectionId: "consulta",
+    documentObject,
+    event,
+    scrollMode: "into-view",
+    targetId: "contactForm",
+    windowObject,
   });
-
-  return true;
 }
