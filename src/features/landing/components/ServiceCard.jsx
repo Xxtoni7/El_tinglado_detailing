@@ -1,4 +1,5 @@
 import { useReveal } from "../hooks/useReveal.js";
+import ServiceCardSummary from "./ServiceCardSummary.jsx";
 
 function ServiceCard({ service, onConsult, revealDelay }) {
   const { ref, isVisible } = useReveal();
@@ -22,33 +23,11 @@ function ServiceCard({ service, onConsult, revealDelay }) {
           width="600"
         />
       </div>
-      <div className="flex flex-1 flex-col p-6">
-        <h3 className="mb-3 font-heading text-xl font-bold text-white">
-          {service.name}
-        </h3>
-        <p className="mb-5 text-[0.9rem] leading-[1.7] text-white/55">
-          {service.description}
-        </p>
-        <div className="mb-5 flex flex-wrap gap-2">
-          {service.tags.map((tag) => (
-            <span
-              className="rounded-full border border-lime/15 bg-lime/8 px-[0.8rem] py-[0.3rem] text-[0.75rem] font-semibold text-lime"
-              key={tag}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-        <div className="mt-auto border-t border-white/6 pt-5">
-          <a
-            className="flex min-h-12 w-full items-center justify-center rounded-full bg-lime px-5 py-[0.85rem] text-[0.9rem] font-bold tracking-[0.01em] text-navy shadow-[0_10px_22px_rgba(200,230,50,.16)] transition hover:-translate-y-0.5 hover:bg-lime-dark hover:shadow-[0_14px_28px_rgba(200,230,50,.22)]"
-            href="#consulta"
-            onClick={(event) => onConsult(event, service.name)}
-          >
-            Consultar
-          </a>
-        </div>
-      </div>
+      <ServiceCardSummary
+        onConsult={onConsult}
+        service={service}
+        variant="desktop"
+      />
     </article>
   );
 }

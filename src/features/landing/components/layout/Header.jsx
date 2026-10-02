@@ -1,8 +1,8 @@
 import { useRef } from "react";
-import logo from "../../../assets/images/Logo.PNG";
-import { useHeaderState } from "../hooks/useHeaderState.js";
-import { navigation } from "../data/navigation.js";
-import Container from "../../../shared/ui/Container.jsx";
+import logo from "../../../../assets/images/Logo.PNG";
+import { useHeaderState } from "../../hooks/useHeaderState.js";
+import { navigation } from "../../data/navigation.js";
+import Container from "../../../../shared/ui/Container.jsx";
 
 function getElementTopWithoutTransform(element) {
   const revealContainer = element.closest(".reveal");

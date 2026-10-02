@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { business } from "../data/business.js";
-import { WhatsAppIcon } from "./Hero.jsx";
+import { business } from "../../data/business.js";
+import { WhatsAppIcon } from "../Hero.jsx";
 
 function FloatingWhatsapp() {
   const [isFooterVisible, setIsFooterVisible] = useState(false);

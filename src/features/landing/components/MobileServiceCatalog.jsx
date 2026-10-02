@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { getServicesByCategory } from "../data/services.js";
 import { getCarouselProgress, getMobileAccordionScrollTop } from "../lib/mobileCarousel.js";
+import ServiceCardSummary from "./ServiceCardSummary.jsx";
 
 function MobileServiceCatalog({ categories, onConsult }) {
   const [openCategoryId, setOpenCategoryId] = useState(
@@ -143,31 +144,11 @@ function MobileServiceCatalog({ categories, onConsult }) {
                         <div className="absolute inset-0 bg-linear-to-t from-navy-light/65 via-transparent to-transparent" />
                       </div>
 
-                      <div className="flex flex-1 flex-col p-5">
-                        <h3 className="font-heading text-lg font-bold leading-[1.3] text-white">
-                          {service.name}
-                        </h3>
-                        <p className="mt-3 text-sm leading-[1.6] text-white/55">
-                          {service.description}
-                        </p>
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          {service.tags.map((tag) => (
-                            <span
-                              className="rounded-full border border-lime/15 bg-lime/8 px-2.5 py-1 text-[0.68rem] font-semibold text-lime"
-                              key={tag}
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                        <a
-                          className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full bg-lime px-4 py-2 text-sm font-bold text-navy"
-                          href="#consulta"
-                          onClick={(event) => onConsult(event, service.name)}
-                        >
-                          Consultar
-                        </a>
-                      </div>
+                      <ServiceCardSummary
+                        onConsult={onConsult}
+                        service={service}
+                        variant="mobile"
+                      />
                     </article>
                   ))}
                 </div>

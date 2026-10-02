@@ -1,6 +1,6 @@
-import logo from "../../../assets/images/Logo.PNG";
-import { business } from "../data/business.js";
-import Container from "../../../shared/ui/Container.jsx";
+import logo from "../../../../assets/images/Logo.PNG";
+import { business } from "../../data/business.js";
+import Container from "../../../../shared/ui/Container.jsx";
 
 const footerNavigation = [
   { href: "#inicio", label: "Inicio" },

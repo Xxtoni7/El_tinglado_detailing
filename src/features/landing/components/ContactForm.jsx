@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { services } from "../data/services.js";
 import { buildWhatsAppUrl } from "../lib/whatsapp.js";
-import { WhatsAppIcon } from "./Hero.jsx";
+import { WhatsAppIcon } from "../../../shared/ui/icons.jsx";
 
 const initialFormData = {
   name: "",
