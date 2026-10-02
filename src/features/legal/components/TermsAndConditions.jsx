@@ -1,4 +1,5 @@
 import { business } from "../../landing/data/business.js";
+import { siteConfig } from "../../../config/site.js";
 import LegalPageLayout, { LegalSection } from "./LegalPageLayout.jsx";
 
 function TermsAndConditions() {
@@ -7,16 +8,12 @@ function TermsAndConditions() {
       description="Estas condiciones regulan el uso de la web, las solicitudes de presupuesto y la información publicada sobre nuestros servicios."
       title="Términos y Condiciones"
     >
-      <LegalSection title="1. Identificación legal del taller">
+      <LegalSection title="1. Identificación del taller">
         <dl className="grid gap-3 rounded-2xl bg-warm p-6 sm:grid-cols-[12rem_1fr]">
           <dt className="font-semibold text-navy">Nombre comercial</dt>
           <dd>{business.tradeName}</dd>
-          <dt className="font-semibold text-navy">Titular o razón social</dt>
-          <dd>{business.legalName}</dd>
           <dt className="font-semibold text-navy">Domicilio comercial</dt>
           <dd>{business.address}</dd>
-          <dt className="font-semibold text-navy">Correo electrónico</dt>
-          <dd>{business.legalEmail}</dd>
           <dt className="font-semibold text-navy">Teléfono</dt>
           <dd>{business.phoneDisplay}</dd>
         </dl>
@@ -118,7 +115,7 @@ function TermsAndConditions() {
           se encuentra explicado en nuestra{" "}
           <a
             className="font-semibold text-navy underline decoration-lime decoration-2 underline-offset-4 transition hover:text-lime-dark"
-            href="#politica-de-privacidad"
+            href={siteConfig.routes.privacy}
           >
             Política de Privacidad
           </a>.

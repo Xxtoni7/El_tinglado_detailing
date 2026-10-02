@@ -10,9 +10,9 @@ function PrivacyPolicy() {
       <LegalSection title="1. Responsable del tratamiento">
         <p>
           El responsable del tratamiento de los datos personales es{" "}
-          <strong>{business.legalName}</strong>, con domicilio en{" "}
-          <strong>{business.address}</strong> y correo electrónico de contacto{" "}
-          <strong>{business.legalEmail}</strong>.
+          <strong>{business.tradeName}</strong>, con domicilio en{" "}
+          <strong>{business.address}</strong> y canal de contacto telefónico{" "}
+          <strong>{business.phoneDisplay}</strong>.
         </p>
       </LegalSection>
 
@@ -67,7 +67,8 @@ function PrivacyPolicy() {
         <p>
           Podés solicitar gratuitamente el acceso, actualización, rectificación
           o supresión de tus datos, y retirar tu consentimiento cuando
-          corresponda, escribiendo a <strong>{business.legalEmail}</strong>.
+          corresponda, comunicándote al{" "}
+          <strong>{business.phoneDisplay}</strong>.
         </p>
       </LegalSection>
 

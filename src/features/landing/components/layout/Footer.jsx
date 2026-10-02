@@ -4,6 +4,7 @@ import { navigateToSection } from "../../lib/sectionNavigation.js";
 import { buildGeneralWhatsAppUrl } from "../../lib/whatsapp.js";
 import Container from "../../../../shared/ui/Container.jsx";
 import { ClockIcon, InstagramIcon, PhoneIcon, PinIcon } from "../../../../shared/ui/icons.jsx";
+import { siteConfig } from "../../../../config/site.js";
 
 const footerNavigation = [
   { href: "#inicio", label: "Inicio" },
@@ -56,13 +57,13 @@ function Footer() {
             >
               <a
                 className="underline decoration-white/20 underline-offset-4 transition hover:text-lime focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-lime"
-                href="#politica-de-privacidad"
+                href={siteConfig.routes.privacy}
               >
                 Política de Privacidad
               </a>
               <a
                 className="underline decoration-white/20 underline-offset-4 transition hover:text-lime focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-lime"
-                href="#terminos-y-condiciones"
+                href={siteConfig.routes.terms}
               >
                 Términos y Condiciones
               </a>

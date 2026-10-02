@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import logo from "../../../assets/images/Logo.PNG";
 import { business } from "../../landing/data/business.js";
 import Container from "../../../shared/ui/Container.jsx";
+import { siteConfig } from "../../../config/site.js";
 
 export function LegalSection({ children, title }) {
   return (
@@ -30,7 +31,7 @@ function LegalPageLayout({ children, description, title }) {
           <div className="flex items-center justify-between gap-4">
             <a
               className="flex items-center gap-3 font-heading text-lg font-bold transition hover:text-lime"
-              href="#inicio"
+              href={siteConfig.routes.home}
             >
               <img
                 alt="El Tinglado Detailing"
@@ -43,7 +44,7 @@ function LegalPageLayout({ children, description, title }) {
             </a>
             <a
               className="rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold transition hover:border-lime hover:text-lime"
-              href="#inicio"
+              href={siteConfig.routes.home}
             >
               Volver al sitio
             </a>
@@ -62,7 +63,7 @@ function LegalPageLayout({ children, description, title }) {
                 {description}
               </p>
               <p className="mt-5 text-sm font-semibold text-navy/60">
-                Última actualización: 1 de octubre de 2026
+                Última actualización: 2 de octubre de 2026
               </p>
             </header>
 

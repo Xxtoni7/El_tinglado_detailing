@@ -1,7 +1,5 @@
 export const business = {
   tradeName: "El Tinglado Detailing",
-  legalName: "[COMPLETAR TITULAR]",
-  legalEmail: "[COMPLETAR CORREO ELECTRÓNICO]",
   developerLinkedinUrl: "https://www.linkedin.com/in/toni-riveros316321/",
   whatsappNumber: "5491154668155",
   phoneDisplay: "+54 11 5466-8155",
