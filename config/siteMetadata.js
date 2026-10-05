@@ -50,7 +50,59 @@ function createRobots(siteUrl) {
   ].join("\n");
 }
 
-export function createSiteMetadataPlugin({ pages, root, siteUrl }) {
+function createBusinessStructuredData({ business, siteUrl }) {
+  const imageUrl = siteUrl
+    ? createAbsoluteUrl(siteUrl, "/og-image.webp")
+    : undefined;
+  const businessId = siteUrl ? `${siteUrl}/#local-business` : undefined;
+  const localBusiness = {
+    "@type": "LocalBusiness",
+    name: business.tradeName,
+    telephone: business.phoneDisplay.replace(/[^\d+]/g, ""),
+    address: {
+      "@type": "PostalAddress",
+      ...business.structuredData.address,
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      ...business.structuredData.geo,
+    },
+    openingHoursSpecification: business.structuredData.openingHoursSpecification.map(
+      (hours) => ({
+        "@type": "OpeningHoursSpecification",
+        ...hours,
+      }),
+    ),
+    sameAs: [business.googleMapsUrl, business.instagramUrl],
+  };
+
+  if (businessId) {
+    localBusiness["@id"] = businessId;
+    localBusiness.url = createAbsoluteUrl(siteUrl, "/");
+    localBusiness.image = imageUrl;
+  }
+
+  const graph = [localBusiness];
+
+  if (siteUrl) {
+    graph.push({
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: createAbsoluteUrl(siteUrl, "/"),
+      name: business.tradeName,
+      publisher: {
+        "@id": businessId,
+      },
+    });
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": graph,
+  };
+}
+
+export function createSiteMetadataPlugin({ business, pages, root, siteUrl }) {
   const normalizedSiteUrl = normalizeSiteUrl(siteUrl);
   const pagesByFilename = new Map(
     pages.map((page) => [resolve(root, page.input), page]),
@@ -76,23 +128,47 @@ export function createSiteMetadataPlugin({ pages, root, siteUrl }) {
     transformIndexHtml: {
       handler(html, { filename }) {
         const page = pagesByFilename.get(resolve(filename));
-
-        if (!normalizedSiteUrl) {
-          return html.replace(
-            'content="index, follow"',
-            'content="noindex, nofollow"',
-          );
-        }
-
         if (!page) {
           return html;
+        }
+
+        const outputHtml = normalizedSiteUrl
+          ? html
+          : html.replace(
+              'content="index, follow"',
+              'content="noindex, nofollow"',
+            );
+        const tags = [];
+
+        if (page.name === "home") {
+          tags.push({
+            attrs: {
+              type: "application/ld+json",
+            },
+            children: JSON.stringify(
+              createBusinessStructuredData({
+                business,
+                siteUrl: normalizedSiteUrl,
+              }),
+            ).replaceAll("<", String.raw`\u003c`),
+            injectTo: "head",
+            tag: "script",
+          });
+        }
+
+        if (!normalizedSiteUrl) {
+          return {
+            html: outputHtml,
+            tags,
+          };
         }
 
         const pageUrl = createAbsoluteUrl(normalizedSiteUrl, page.route);
 
         return {
-          html,
+          html: outputHtml,
           tags: [
+            ...tags,
             {
               attrs: {
                 rel: "canonical",
@@ -105,6 +181,30 @@ export function createSiteMetadataPlugin({ pages, root, siteUrl }) {
               attrs: {
                 property: "og:url",
                 content: pageUrl,
+              },
+              injectTo: "head",
+              tag: "meta",
+            },
+            {
+              attrs: {
+                property: "og:image",
+                content: createAbsoluteUrl(siteUrl, "/og-image.webp"),
+              },
+              injectTo: "head",
+              tag: "meta",
+            },
+            {
+              attrs: {
+                property: "og:image:alt",
+                content: "Autos en el taller de El Tinglado Detailing",
+              },
+              injectTo: "head",
+              tag: "meta",
+            },
+            {
+              attrs: {
+                name: "twitter:image",
+                content: createAbsoluteUrl(siteUrl, "/og-image.webp"),
               },
               injectTo: "head",
               tag: "meta",

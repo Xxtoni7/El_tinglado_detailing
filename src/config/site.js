@@ -1,6 +1,5 @@
 export const siteConfig = {
-  // Completar únicamente cuando se conecte el dominio definitivo.
-  url: "",
+  url: "https://www.eltingladodetailing.com",
   routes: {
     home: "/",
     privacy: "/politica-de-privacidad/",

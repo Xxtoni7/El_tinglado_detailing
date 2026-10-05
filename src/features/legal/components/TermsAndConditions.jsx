@@ -12,10 +12,28 @@ function TermsAndConditions() {
         <dl className="grid gap-3 rounded-2xl bg-warm p-6 sm:grid-cols-[12rem_1fr]">
           <dt className="font-semibold text-navy">Nombre comercial</dt>
           <dd>{business.tradeName}</dd>
+          {business.ownerFullName && (
+            <>
+              <dt className="font-semibold text-navy">
+                Nombre del titular
+              </dt>
+              <dd>{business.ownerFullName}</dd>
+            </>
+          )}
           <dt className="font-semibold text-navy">Domicilio comercial</dt>
           <dd>{business.address}</dd>
           <dt className="font-semibold text-navy">Teléfono</dt>
           <dd>{business.phoneDisplay}</dd>
+          {business.email && (
+            <>
+              <dt className="font-semibold text-navy">Correo electrónico</dt>
+              <dd>
+                <a className="underline" href={`mailto:${business.email}`}>
+                  {business.email}
+                </a>
+              </dd>
+            </>
+          )}
         </dl>
       </LegalSection>
 

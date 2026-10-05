@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, loadEnv } from "vite";
 import { createSiteMetadataPlugin } from "./config/siteMetadata.js";
 import { siteConfig, sitePages } from "./src/config/site.js";
+import { business } from "./src/features/landing/data/business.js";
 
 export default defineConfig(({ mode }) => {
   const environment = loadEnv(mode, import.meta.dirname, "");
@@ -25,6 +26,7 @@ export default defineConfig(({ mode }) => {
       react(),
       tailwindcss(),
       createSiteMetadataPlugin({
+        business,
         pages: sitePages,
         root: import.meta.dirname,
         siteUrl,

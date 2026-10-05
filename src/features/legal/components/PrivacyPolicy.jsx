@@ -9,10 +9,26 @@ function PrivacyPolicy() {
     >
       <LegalSection title="1. Responsable del tratamiento">
         <p>
-          El responsable del tratamiento de los datos personales es{" "}
-          <strong>{business.tradeName}</strong>, con domicilio en{" "}
-          <strong>{business.address}</strong> y canal de contacto telefónico{" "}
-          <strong>{business.phoneDisplay}</strong>.
+          <strong>{business.tradeName}</strong> es responsable del tratamiento
+          de los datos personales.
+          {business.ownerFullName && (
+            <> Su titular es <strong>{business.ownerFullName}</strong>.</>
+          )}
+          {" "}Para consultas sobre tus datos, podés comunicarte{" "}
+          {business.email && (
+            <>
+              por correo electrónico a{" "}
+              <a
+                className="font-semibold text-navy underline decoration-lime decoration-2 underline-offset-4 transition hover:text-lime-dark"
+                href={`mailto:${business.email}`}
+              >
+                {business.email}
+              </a>{" "}
+              o
+            </>
+          )}{" "}
+          al teléfono <strong>{business.phoneDisplay}</strong>. El domicilio
+          comercial es <strong>{business.address}</strong>.
         </p>
       </LegalSection>
 
@@ -68,7 +84,19 @@ function PrivacyPolicy() {
           Podés solicitar gratuitamente el acceso, actualización, rectificación
           o supresión de tus datos, y retirar tu consentimiento cuando
           corresponda, comunicándote al{" "}
-          <strong>{business.phoneDisplay}</strong>.
+          <strong>{business.phoneDisplay}</strong>
+          {business.email && (
+            <>
+              {" "}o por correo electrónico a{" "}
+              <a
+                className="font-semibold text-navy underline decoration-lime decoration-2 underline-offset-4 transition hover:text-lime-dark"
+                href={`mailto:${business.email}`}
+              >
+                {business.email}
+              </a>
+            </>
+          )}
+          .
         </p>
       </LegalSection>
 

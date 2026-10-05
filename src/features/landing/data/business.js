@@ -1,11 +1,38 @@
 export const business = {
   tradeName: "El Tinglado Detailing",
+  ownerFullName: "Néstor Daniel Montagut",
+  email: "eltingladodetailing@gmail.com",
   developerLinkedinUrl: "https://www.linkedin.com/in/toni-riveros316321/",
   whatsappNumber: "5491154668155",
   phoneDisplay: "+54 11 5466-8155",
   address: "Av. Hipólito Yrigoyen 1411, Gral. Pacheco",
   location: "Provincia de Buenos Aires, Argentina",
   hours: "Lunes a Viernes: 8:30 a.m – 18:30 p.m",
+  structuredData: {
+    address: {
+      streetAddress: "Av. Hipólito Yrigoyen 1411",
+      addressLocality: "General Pacheco",
+      addressRegion: "Buenos Aires",
+      addressCountry: "AR",
+    },
+    geo: {
+      latitude: -34.4634512,
+      longitude: -58.6407508,
+    },
+    openingHoursSpecification: [
+      {
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+        ],
+        opens: "08:30",
+        closes: "18:30",
+      },
+    ],
+  },
   googleReviewsUrl:
     "https://www.google.com/maps/place/El+Tinglado+Detailing/@-34.4634533,-58.6405549,17z/data=!4m8!3m7!1s0x95bca528a8637e11:0xaca6312436c16acc!8m2!3d-34.4634512!4d-58.6407508!9m1!1b1!16s%2Fg%2F11wq9d802k?hl=es&entry=ttu&g_ep=EgoyMDI2MDkyMC4wIKXMDSoASAFQAw%3D%3D",
   googleMapsUrl:
