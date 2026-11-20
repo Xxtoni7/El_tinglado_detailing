@@ -16,11 +16,13 @@ export const sitePages = [
   {
     input: "politica-de-privacidad/index.html",
     name: "privacy",
+    indexable: false,
     route: siteConfig.routes.privacy,
   },
   {
     input: "terminos-y-condiciones/index.html",
     name: "terms",
+    indexable: false,
     route: siteConfig.routes.terms,
   },
 ];

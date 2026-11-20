@@ -22,6 +22,7 @@ function createAbsoluteUrl(siteUrl, route) {
 
 function createSitemap(siteUrl, pages) {
   const urls = pages
+    .filter(({ indexable }) => indexable !== false)
     .map(
       ({ route }) =>
         `  <url><loc>${createAbsoluteUrl(siteUrl, route)}</loc></url>`,
