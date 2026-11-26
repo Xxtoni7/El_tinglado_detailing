@@ -25,11 +25,11 @@ function ServicesSection({ onConsult }) {
             eyebrowId="servicios-eyebrow"
             title={
               <>
-                Soluciones profesionales <br />
+                Servicios de detailing <br />
                 para cada necesidad
               </>
             }
-            description="Desde una limpieza profunda hasta la máxima protección. Elegí el servicio ideal para tu vehículo."
+            description="Tratamiento cerámico, pulido de ópticas y limpieza de interior, entre otros servicios para cuidar y renovar tu vehículo."
           />
         </div>
         <div className="mt-14 max-md:hidden">

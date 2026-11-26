@@ -90,7 +90,7 @@ export const services = [
     category: 'correccion-renovacion',
     name: 'Pulido de Ópticas',
     description:
-      'Restauración estética de ópticas opacas o deterioradas para mejorar su transparencia y renovar la apariencia frontal del vehículo.',
+      'Pulido de ópticas de autos para recuperar la transparencia de faros opacos o deteriorados y renovar la apariencia frontal del vehículo.',
     image: optica,
     alt: 'Pulido de ópticas automotrices',
     tags: ['Mayor transparencia', 'Restauración'],

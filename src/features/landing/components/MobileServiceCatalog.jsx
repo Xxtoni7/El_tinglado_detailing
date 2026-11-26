@@ -111,10 +111,10 @@ function MobileServiceCatalog({ categories, onConsult }) {
               </div>
             </button>
 
-            {isOpen && (
               <div
-                aria-live="polite"
+                aria-live={isOpen ? "polite" : "off"}
                 className="pb-6"
+                hidden={!isOpen}
                 id={contentId}
               >
                 <p className="mb-5 text-sm leading-[1.65] text-white/55">
@@ -123,7 +123,7 @@ function MobileServiceCatalog({ categories, onConsult }) {
 
                 <div
                   className="flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto pb-3 scrollbar-none [&::-webkit-scrollbar]:hidden"
-                  key={category.id}
+                  key={`${category.id}-${isOpen}`}
                   onScroll={updateCarouselProgress}
                 >
                   {services.map((service) => (
@@ -168,7 +168,6 @@ function MobileServiceCatalog({ categories, onConsult }) {
                   </div>
                 )}
               </div>
-            )}
           </div>
         );
       })}

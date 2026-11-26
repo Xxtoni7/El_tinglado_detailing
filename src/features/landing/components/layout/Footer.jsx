@@ -49,7 +49,7 @@ function Footer() {
               <span>El Tinglado Detailing</span>
             </a>
             <p className="mt-4 max-w-90 text-[.9rem] leading-6 text-white/60 max-md:mx-auto">
-              Detailing y protección automotriz en General Pacheco.
+              Detailing y protección automotriz en General Pacheco, Zona Norte.
             </p>
             <nav
               aria-label="Información legal"

@@ -86,7 +86,7 @@ function Workshop() {
             ref={imageRef}
           >
             <img
-              alt="Interior del taller de detailing"
+              alt="Interior de El Tinglado Detailing en General Pacheco, Zona Norte"
               className={`h-full w-full object-cover transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 ${
                 isImageZoomed ? "max-md:scale-105" : ""
               }`}
@@ -115,10 +115,10 @@ function Workshop() {
             style={{ transitionDelay: "0.2s" }}
           >
             <h3 className="mb-4 font-heading text-[1.3rem] font-bold text-navy max-md:mb-3 max-md:leading-[1.35]">
-              Un espacio diseñado para el cuidado de tu vehículo
+              Tu taller de detailing en Zona Norte
             </h3>
             <p className="mb-6 leading-[1.8] text-[#6E6A64]  max-md:mb-4 max-md:leading-[1.65]">
-              En El Tinglado Detailing llevamos la estética y protección de tu vehículo a otro nivel. Combinamos procesos profesionales, iluminación técnica y productos premium para lograr un acabado que se nota desde el primer vistazo.
+              En El Tinglado Detailing cuidamos la estética y protección de tu vehículo en General Pacheco, Zona Norte de Buenos Aires. Combinamos procesos profesionales, iluminación técnica y productos premium para lograr un acabado que se nota desde el primer vistazo.
             </p>
             <p className="mb-6 leading-[1.8] text-[#6E6A64] max-md:mb-4 max-md:leading-[1.65]">
               Desde una limpieza profunda hasta una corrección de pintura, tratamos cada vehículo como único para que vuelva a lucir impecable y se mantenga protegido por más tiempo.

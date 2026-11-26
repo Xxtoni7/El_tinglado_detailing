@@ -12,7 +12,6 @@ function ServiceCatalog({ categories, onConsult }) {
   const selectedCategory = categories.find(
     (category) => category.id === selectedCategoryId,
   );
-  const selectedServices = getServicesByCategory(selectedCategoryId);
 
   if (!selectedCategory) {
     return null;
@@ -86,31 +85,39 @@ function ServiceCatalog({ categories, onConsult }) {
         </nav>
       </aside>
 
-      <div
-        aria-live="polite"
-        key={selectedCategory.id}
-        ref={categoryPanelRef}
-      >
-        <div className="mb-7 border-b border-white/12 pb-6">
-          <h3 className="font-heading text-[clamp(1.8rem,3vw,2.6rem)] font-bold leading-[1.12] text-white">
-            {selectedCategory.name}
-          </h3>
-          <p className="mt-3 max-w-155 text-[0.98rem] leading-[1.7] text-white/60">
-            {selectedCategory.description}
-          </p>
-        </div>
+      {categories.map((category) => {
+        const isSelected = category.id === selectedCategoryId;
+        const categoryServices = getServicesByCategory(category.id);
 
-        <div className="grid grid-cols-2 gap-6 max-lg:grid-cols-1">
-          {selectedServices.map((service, index) => (
-            <ServiceCard
-              key={service.name}
-              onConsult={onConsult}
-              revealDelay={index * 80}
-              service={service}
-            />
-          ))}
-        </div>
-      </div>
+        return (
+          <div
+            aria-live={isSelected ? "polite" : "off"}
+            hidden={!isSelected}
+            key={category.id}
+            ref={isSelected ? categoryPanelRef : null}
+          >
+            <div className="mb-7 border-b border-white/12 pb-6">
+              <h3 className="font-heading text-[clamp(1.8rem,3vw,2.6rem)] font-bold leading-[1.12] text-white">
+                {category.name}
+              </h3>
+              <p className="mt-3 max-w-155 text-[0.98rem] leading-[1.7] text-white/60">
+                {category.description}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-6 max-lg:grid-cols-1">
+              {categoryServices.map((service, index) => (
+                <ServiceCard
+                  key={service.name}
+                  onConsult={onConsult}
+                  revealDelay={index * 80}
+                  service={service}
+                />
+              ))}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
